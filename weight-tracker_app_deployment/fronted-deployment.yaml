@@ -20,4 +20,4 @@ spec:
         - containerPort: 3000
         env:
         - name: BACKEND_API_URL
-          value: "http://weight-tracker-backend.weight-tracker.svc.cluster.local"
+          value: "http://weigh-tracker-backend.weight-tracker.svc.cluster.local"
