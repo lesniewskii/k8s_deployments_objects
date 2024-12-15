@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weigh-tracker-backend
+  namespace: weight-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weigh-tracker-backend
+  template:
+    metadata:
+      labels:
+        app: weigh-tracker-backend
+        namespace: weight-tracker
+    spec:
+      containers:
+        - name: weigh-tracker-backend
+          image: lesiiu/weight-tracker-backend:1.0.0
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: "postgres.database.svc.cluster.local"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: "postgres"
+            - name: DB_PASSWORD
+              value: "yourpassword"
+            - name: DB_NAME
+              value: "weight_tracker"

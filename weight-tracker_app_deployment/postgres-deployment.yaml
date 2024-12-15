@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: database
+  labels:
+    app: postgres
+    namespace: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+        namespace: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15  # Specify the desired PostgreSQL version
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          value: postgres  # Replace with your desired username
+        - name: POSTGRES_PASSWORD
+          value: yourpassword  # Replace with your desired password
+        - name: POSTGRES_DB
+          value: mydatabase  # Replace with your desired database name
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-storage
+          subPath: postgres
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc
