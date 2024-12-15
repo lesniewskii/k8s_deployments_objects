@@ -8,7 +8,7 @@ spec:
     app: react-frontend
   ports:
   - protocol: TCP
-    port: 8000
+    port: 8090
     targetPort: 3000
   type: LoadBalancer
 
