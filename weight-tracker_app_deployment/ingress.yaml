@@ -1,26 +1,26 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: app-ingress
-  namespace: weight-tracker
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - host: your-app.example.com  # Replace with your domain
-    http:
-      paths:
-      - path: /measurements
-        pathType: Prefix
-        backend:
-          service:
-            name: weigh-tracker-backend
-            port:
-              number: 80
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: react-frontend
-            port:
-              number: 80
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: app-ingress
+#   namespace: weight-tracker
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: your-app.example.com  # Replace with your domain
+#     http:
+#       paths:
+#       - path: /measurements
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: weigh-tracker-backend
+#             port:
+#               number: 80
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: react-frontend
+#             port:
+#               number: 80
