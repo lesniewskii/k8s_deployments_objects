@@ -13,7 +13,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: fastapi-backend
+            name: weigh-tracker-backend
             port:
               number: 80
       - path: /
