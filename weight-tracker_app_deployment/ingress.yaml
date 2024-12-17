@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: 10.43.183.79  # Replace with your domain
+    http:
+      paths:
+      - path: /measurements
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi-backend
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: react-frontend
+            port:
+              number: 80
