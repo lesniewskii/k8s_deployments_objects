@@ -30,4 +30,11 @@ spec:
               value: "yourpassword"
             - name: DB_NAME
               value: "weight_tracker"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 8000
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 20
+
               
