@@ -9,17 +9,17 @@ spec:
   rules:
     http:
       paths:
-      - path: /
+      - path: /measurements
         pathType: Prefix
         backend:
           service:
-            name: weigh-tracker-backend
+            name: weigh-tracker-backend-service
             port:
               number: 8000
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: react-frontend
+            name: react-frontend-service
             port:
               number: 80
