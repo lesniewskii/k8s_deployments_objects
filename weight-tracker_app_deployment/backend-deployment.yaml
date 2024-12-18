@@ -30,3 +30,4 @@ spec:
               value: "yourpassword"
             - name: DB_NAME
               value: "weight_tracker"
+              
