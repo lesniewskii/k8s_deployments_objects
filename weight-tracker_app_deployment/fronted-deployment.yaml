@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: lesiiu/weight-tracker-frontend:1.0.6
+        image: lesiiu/weight-tracker-backend:1.0.7
         ports:
         - containerPort: 80
         env:
