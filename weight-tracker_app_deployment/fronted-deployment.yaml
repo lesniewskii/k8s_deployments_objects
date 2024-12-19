@@ -22,10 +22,6 @@ spec:
         - name: REACT_APP_BACKEND_API_URL
           # value: "http://10.43.183.79:30000"
           value: "http://10.43.183.79:8000"
-        command: ["/bin/sh", "-c"]
-        args:
-        - |
-          echo "REACT_APP_BACKEND_API_URL=$REACT_APP_BACKEND_API_URL"
 
     # livenessProbe:
     #   httpGet:
