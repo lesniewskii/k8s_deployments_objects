@@ -22,10 +22,9 @@ spec:
         - name: REACT_APP_BACKEND_API_URL
           # value: "http://10.43.183.79:30000"
           value: "http://10.43.183.79:8000"
-
-    # livenessProbe:
-    #   httpGet:
-    #     path: /
-    #     port: 80
-    #   initialDelaySeconds: 15
-    #   periodSeconds: 20
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 15
+      periodSeconds: 20
