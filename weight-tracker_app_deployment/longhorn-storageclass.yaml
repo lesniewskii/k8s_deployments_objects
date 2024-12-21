@@ -1,7 +1,8 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  mame: postgres-pvc
+  name: longhorn
+  namespace: longhorn
 provisioner: driver.longhorn.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
