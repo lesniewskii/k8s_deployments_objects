@@ -6,6 +6,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 1Gi  # Adjust storage size as needed
+      storage: 5Gi  # Adjust storage size as needed
