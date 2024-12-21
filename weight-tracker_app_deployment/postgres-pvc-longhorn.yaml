@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: postgres-pvc-longhorn
+  name: postgres-data-new
   namespace: database
 spec:
   accessModes:
