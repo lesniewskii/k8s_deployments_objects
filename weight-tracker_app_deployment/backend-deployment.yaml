@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: weigh-tracker-backend
-          image: lesiiu/weight-tracker-backend:1.0.3
+          image: lesiiu/weight-tracker-backend:1.0.5-healthcheck
           ports:
             - containerPort: 8000
           env:
