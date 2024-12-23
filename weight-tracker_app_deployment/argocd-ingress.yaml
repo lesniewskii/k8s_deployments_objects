@@ -9,8 +9,21 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.local`) # Change this to your desired domain
+      match: Host(`argocd.local`)  # Change to your domain
       services:
-        - name: argocd-server
+        - name: argocd-server  # This is your ClusterIP service name
           port: 80
+      middlewares:
+        - name: redirect-https
   tls: {}
+---
+# Middleware to redirect HTTP to HTTPS
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: argocd
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
