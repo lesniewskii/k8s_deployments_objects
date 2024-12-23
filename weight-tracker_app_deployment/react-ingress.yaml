@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`react.io`)  # Change to your domain
+      match: Host(`react.local.io`)  # Change to your domain
       services:
         - name: react-frontend-service  # This is your ClusterIP service name
           port: 80
