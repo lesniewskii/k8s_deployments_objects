@@ -1,0 +1,29 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: react-frontend-ingress
+  namespace: weight-tracker
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`react.io`)  # Change to your domain
+      services:
+        - name: react-frontend-service  # This is your ClusterIP service name
+          port: 80
+      middlewares:
+        - name: redirect-https-frontend
+  tls: {}
+---
+# Middleware to redirect HTTP to HTTPS
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https-frontend
+  namespace: weight-tracker
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
