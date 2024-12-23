@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.local`)  # Change to your domain
+      match: Host(`argocd.local.io`)  # Change to your domain
       services:
         - name: argocd-server  # This is your ClusterIP service name
           port: 80
