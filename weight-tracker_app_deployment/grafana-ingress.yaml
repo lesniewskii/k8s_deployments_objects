@@ -1,0 +1,29 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-ingress
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`grafana.local.io`)  # Change to your domain
+      services:
+        - name: my-grafana  # This is your ClusterIP service name
+          port: 80
+      middlewares:
+        - name: redirect-https-grafana
+  tls: {}
+---
+# Middleware to redirect HTTP to HTTPS
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https-grafana
+  namespace: monitoring
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
