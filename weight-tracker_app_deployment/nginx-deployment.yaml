@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: basic-app
+  name: nginx-basic-app
   namespace: nginx
   labels:
     app: basic-app
