@@ -52,7 +52,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 1200
+      targetPort: 80
   type: ClusterIP
 ---
 # nignx-configmap.yaml
