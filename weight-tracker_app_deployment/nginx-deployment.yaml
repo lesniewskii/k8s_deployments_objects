@@ -19,7 +19,7 @@ spec:
       - name: basic-app
         image: nginx:latest
         ports:
-        - containerPort: 80
+        - containerPort: 100
         resources:
           requests:
             cpu: "100m"
@@ -30,13 +30,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 100
           initialDelaySeconds: 3
           periodSeconds: 3
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 100
           initialDelaySeconds: 3
           periodSeconds: 3
 ---
@@ -51,8 +51,8 @@ spec:
     app: basic-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 150
+      targetPort: 100
   type: ClusterIP
 ---
 # nignx-configmap.yaml
@@ -84,4 +84,4 @@ spec:
           service:
             name: basic-app-service
             port:
-              number: 80
+              number: 150
