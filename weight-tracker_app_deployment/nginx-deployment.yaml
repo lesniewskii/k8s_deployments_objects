@@ -36,7 +36,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 100
+            port: 80
           initialDelaySeconds: 3
           periodSeconds: 3
 ---
