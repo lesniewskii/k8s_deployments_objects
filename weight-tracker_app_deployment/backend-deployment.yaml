@@ -19,17 +19,11 @@ spec:
           image: lesiiu/weight-tracker-backend:1.0.5-healthcheck
           ports:
             - containerPort: 8000
-          env:
-            - name: DB_HOST
-              value: "postgres.database.svc.cluster.local"
-            - name: DB_PORT
-              value: "5432"
-            - name: DB_USER
-              value: "postgres"
-            - name: DB_PASSWORD
-              value: "yourpassword"
-            - name: DB_NAME
-              value: "weight_tracker"
+          envFrom:
+            - configMapRef:
+              name: db-config
+            - secretRef:
+              name: db-credentials
           livenessProbe:
             httpGet:
               path: /health
