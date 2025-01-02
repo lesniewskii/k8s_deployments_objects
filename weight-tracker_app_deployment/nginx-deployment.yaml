@@ -51,7 +51,7 @@ spec:
     app: basic-app
   ports:
     - protocol: TCP
-      port: 8080
+      port: 6666
       targetPort: 80
   type: ClusterIP
 ---
