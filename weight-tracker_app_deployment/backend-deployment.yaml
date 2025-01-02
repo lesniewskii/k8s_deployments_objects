@@ -21,9 +21,9 @@ spec:
             - containerPort: 8000
           envFrom:
             - configMapRef:
-              name: db-config
+                name: db-config
             - secretRef:
-              name: db-credentials
+                name: db-credentials
           livenessProbe:
             httpGet:
               path: /health
