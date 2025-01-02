@@ -51,7 +51,7 @@ spec:
     app: basic-app
   ports:
     - protocol: TCP
-      port: 8090      # Cluster-internal port
+      port: 8090      # Cluster-internal port -> now curl should work: http://basic-app-service.nginx:8080
       targetPort: 80  # Container port (matches containerPort above form nginx deployment)
   type: ClusterIP
 ---
