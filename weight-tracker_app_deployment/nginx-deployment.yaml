@@ -19,7 +19,7 @@ spec:
       - name: basic-app
         image: nginx:latest
         ports:
-        - containerPort: 80
+        - containerPort: 80 # REMEMBER! Nginx is listening on port 80 inside container
         resources:
           requests:
             cpu: "100m"
@@ -51,8 +51,8 @@ spec:
     app: basic-app
   ports:
     - protocol: TCP
-      port: 8090
-      targetPort: 80
+      port: 8090      # Cluster-internal port
+      targetPort: 80  # Container port (matches containerPort above form nginx deployment)
   type: ClusterIP
 ---
 # nignx-configmap.yaml
