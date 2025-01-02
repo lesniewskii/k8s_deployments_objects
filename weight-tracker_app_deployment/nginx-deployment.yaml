@@ -84,4 +84,4 @@ spec:
           service:
             name: basic-app-service
             port:
-              number: 80
+              number: 8090
