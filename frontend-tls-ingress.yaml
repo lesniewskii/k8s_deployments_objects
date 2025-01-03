@@ -21,7 +21,7 @@ spec:
   tls:
     - secretName: frontend-tls
       hosts:
-        - react.local.io
+        - whoami.${DOMAIN}
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
