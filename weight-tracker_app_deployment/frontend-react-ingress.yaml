@@ -5,17 +5,33 @@ metadata:
   namespace: weight-tracker
 spec:
   entryPoints:
-    - web
     - websecure
   routes:
     - kind: Rule
-      match: Host(`react.local.io`)  # Change to your domain
+      match: Host(`react.local.io`)
       services:
-        - name: react-frontend-service  # This is your ClusterIP service name
+        - name: react-frontend-service
           port: 80
       middlewares:
         - name: redirect-https-frontend
   tls: {}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: react-frontend-ingress-http
+  namespace: weight-tracker
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`react.local.io`)
+      middlewares:
+        - name: redirect-https-frontend
+      services:
+        - name: react-frontend-service
+          port: 80
 ---
 # Middleware to redirect HTTP to HTTPS
 apiVersion: traefik.containo.us/v1alpha1
