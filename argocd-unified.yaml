@@ -1,4 +1,33 @@
-#ToDO create a new folders and put there yamls.
+#ToDO create a new folders and put there yamls like below:
+
+repo/
+│
+├── argocd/
+│   ├── cluster-ip.yaml
+│   └── ingress.yaml
+│
+├── frontend/
+│   ├── deployment.yaml
+│   ├── load-balancer.yaml
+│   └── ingress.yaml
+│
+├── backend/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│
+├── database/
+│   ├── cluster-ip.yaml
+│   ├── configmap-and-secret.yaml
+│   ├── deployment.yaml
+│   ├── pvc-longhorn.yaml
+│
+├── monitoring/
+│   ├── grafana-ingress.yaml
+│   └── longhorn-storageclass.yaml
+│
+└── nginx/
+    └── deployment.yaml
+
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
