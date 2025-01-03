@@ -15,7 +15,7 @@ spec:
       middlewares:
         - name: redirect-https-frontend
   tls:
-    secretName: react-tls-cert
+    secretName: react-tls-cert-chat
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
