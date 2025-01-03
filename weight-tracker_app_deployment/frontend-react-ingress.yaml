@@ -14,7 +14,8 @@ spec:
           port: 80
       middlewares:
         - name: redirect-https-frontend
-  tls: {}
+  tls:
+    secretName: react-tls-cert
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
