@@ -15,6 +15,7 @@ spec:
       middlewares:
         - name: redirect-https-frontend
   tls:
+    - react.local.io
     secretName: react-tls-cert-k3s
 ---
 apiVersion: traefik.containo.us/v1alpha1
