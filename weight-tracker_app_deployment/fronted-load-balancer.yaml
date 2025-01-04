@@ -7,11 +7,15 @@ spec:
   selector:
     app: react-frontend
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 30008
-  type: NodePort
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 80
+      protocol: TCP
+      name: https
+  type: ClusterIP
 
 
 
