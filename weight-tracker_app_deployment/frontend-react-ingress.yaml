@@ -11,11 +11,11 @@ spec:
       match: Host(`react.local.io`)
       services:
         - name: react-frontend-service
-          port: 80
+          port: 443
       middlewares:
         - name: redirect-https-frontend
   tls:
-    secretName: react-tls-cert-chat
+    secretName: react-tls-cert-k3s
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
