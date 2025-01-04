@@ -11,7 +11,7 @@ spec:
       match: Host(`react.local.io`)
       services:
         - name: react-frontend-service
-          port: 443
+          port: 80
       middlewares:
         - name: redirect-https-frontend
   tls:
