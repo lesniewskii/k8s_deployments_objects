@@ -32,7 +32,7 @@ spec:
   source:
     repoURL: https://github.com/lesniewskii/k8s_deployments_objects.git
     targetRevision: HEAD
-    path: homepage
+    path: tracker_app_deployment/homepage
   destination:
     server: https://kubernetes.default.svc
     namespace: homepage
