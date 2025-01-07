@@ -22,9 +22,9 @@ data:
               href: https://github.com/
   services.yaml: |
     - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+        - Grafana:
+            href: http://grafana.local.io/
+            description: Local grafana
 
     - My Second Group:
         - My Second Service:
