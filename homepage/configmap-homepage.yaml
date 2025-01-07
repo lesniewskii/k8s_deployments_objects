@@ -24,16 +24,16 @@ data:
     - My First Group:
         - Grafana:
             href: http://grafana.local.io/
-            description: Local grafana
+            description: Local Grafana
 
     - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
+        - Weight Tracker:
+            href: http://react.local.io/
+            description: Frontend of Weight Tracker
 
     - My Third Group:
         - My Third Service:
-            href: http://localhost/
+            href: http://homepage.local.io/
             description: Homepage is 😎
   widgets.yaml: |
     - kubernetes:
