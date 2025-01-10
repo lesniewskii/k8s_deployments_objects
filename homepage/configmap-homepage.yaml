@@ -25,6 +25,9 @@ data:
         - Grafana:
             href: http://grafana.local.io/
             description: Local Grafana
+        - ArgoCD:
+            href: https://argocd.local.io/
+            description: Local ArgoCD
 
     - My Second Group:
         - Weight Tracker Frontend:
