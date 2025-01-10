@@ -27,9 +27,12 @@ data:
             description: Local Grafana
 
     - My Second Group:
-        - Weight Tracker:
+        - Weight Tracker Frontend:
             href: http://react.local.io/
             description: Frontend of Weight Tracker
+        - Weight Tracker Backend:
+            href: http://10.43.183.79:8000
+            description: Backend of Weight Tracker
 
     - My Third Group:
         - My Third Service:
