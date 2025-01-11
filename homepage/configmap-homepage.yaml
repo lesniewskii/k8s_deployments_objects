@@ -28,6 +28,9 @@ data:
         - ArgoCD:
             href: https://argocd.local.io/
             description: Local ArgoCD
+        - Longhorn:
+            href: http://10.43.223.22/#/dashboard
+            description: Longhorn Volumens
 
     - My Second Group:
         - Weight Tracker Frontend:
