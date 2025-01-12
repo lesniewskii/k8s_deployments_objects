@@ -63,10 +63,6 @@ data:
         cpu: true
         memory: true
         network: default
-    - calendar:
-      - calendar:
-          widget:
-            type: calendar
     - search:
         provider: duckduckgo
         target: _blank
