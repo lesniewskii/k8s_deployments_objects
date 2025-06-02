@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-basic-app
+  labels:
+    app: basic-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-app
+  template:
+    metadata:
+      labels:
+        app: basic-app
+    spec:
+      containers:
+      - name: basic-app
+        image: nginx:latest
+        ports:
+        - containerPort: 80 # REMEMBER! Nginx is listening on port 80 inside container
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
+---
+# nginx-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: basic-app-service
+spec:
+  selector:
+    app: basic-app
+  ports:
+    - protocol: TCP
+      port: 8090      # Cluster-internal port -> now curl should work: http://basic-app-service.nginx:8090
+      targetPort: 80  # Container port (matches containerPort above form nginx deployment)
+  type: ClusterIP
+---
+# nignx-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: basic-app-config
+data:
+  app.properties: |
+    environment=development
+    log.level=INFO
+---
+# nginx-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /app
+        pathType: Prefix
+        backend:
+          service:
+            name: basic-app-service
+            port:
+              number: 8090
