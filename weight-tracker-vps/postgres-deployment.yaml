@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: database
+  labels:
+    app: postgres
+    namespace: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+        namespace: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: DB_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_PASSWORD
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: DB_NAME
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-storage
+          subPath: postgres
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-data-new
