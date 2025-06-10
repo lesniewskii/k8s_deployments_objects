@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weigh-tracker-backend
+  namespace: weight-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weigh-tracker-backend
+  template:
+    metadata:
+      labels:
+        app: weigh-tracker-backend
+        namespace: weight-tracker
+    spec:
+      containers:
+        - name: weigh-tracker-backend
+          image: lesiiu/weight-tracker-backend:1.0.5-healthcheck
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: db-config
+            - secretRef:
+                name: db-credentials
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+
+              
