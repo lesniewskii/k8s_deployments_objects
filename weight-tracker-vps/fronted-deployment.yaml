@@ -21,7 +21,7 @@ spec:
         env:
         - name: REACT_APP_BACKEND_API_URL
           # value: weigh-tracker-backend-service.weight-tracker.svc.cluster.local:8000
-          value: "http://10.43.112.145:8000"
+          value: "http://10.42.0.30:8000"
         livenessProbe:
           httpGet:
             path: /
